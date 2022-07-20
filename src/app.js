@@ -22,7 +22,7 @@ const app = async (yargsObj) => {
       const results = await collection.findOne({title: yargsObj.title});
       console.log(results);
       console.log("Has been updated to...")
-      const updates = await collection.updateOne({title: yargsObj.title}, {$set: {title: yargsObj.newTitle}});
+      await collection.updateOne({title: yargsObj.title}, {$set: {title: yargsObj.newTitle}});
       const results2 = await collection.findOne({title: yargsObj.newTitle});
       console.log(results2);
     }
@@ -30,17 +30,17 @@ const app = async (yargsObj) => {
       const results = await collection.findOne({actor: yargsObj.actor});
       console.log(results);
       console.log("Has been updated to...")
-      const updates = await collection.updateOne({title: yargsObj.actor}, {$set: {title: yargsObj.newActor}});
+      await collection.updateOne({title: yargsObj.actor}, {$set: {title: yargsObj.newActor}});
       const results2 = await collection.findOne({title: yargsObj.newActor});
       console.log(results2);
-    } 
+    }
     else {
       console.log("Please Specify (--title or --actor) and (--newTitle or --newActor) respectively")
     }
     //update one database entry
   } 
   else if (yargsObj.delete) {
-    console.log("(D)elete");
+    console.log("(D)elete an Item");
     if (yargsObj.title) {
       const results = await collection.findOne({title: yargsObj.title});
       console.log(results);
